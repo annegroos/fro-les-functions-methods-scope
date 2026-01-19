@@ -17,11 +17,11 @@ function getEmailDomain(email) {
 }
 
 const domainName = getEmailDomain("a.wiersma@outlook.com");
-console.log(domainName)
+console.log(domainName);
 
 // dubbel check:
 const domainNameTwo = getEmailDomain("t.mellink@novi.nl");
-console.log(domainNameTwo)
+console.log(domainNameTwo);
 
 // Eerst zo gecheckt of ik de juiste methods gebruik:
 //      const getDomain = "a.wiersma@outlook.com";
@@ -46,11 +46,11 @@ function typeOfEmail(email) {
     const domainName = email.substring(getDomain + 1);
 
     if (domainName === "novi-education.nl") {
-        return domainName.replaceAll("novi-education.nl", "Student")
+        return domainName.replaceAll("novi-education.nl", "Student");
     } else if (domainName === "novi.nl") {
-        return domainName.replaceAll("novi.nl", "Medewerker")
+        return domainName.replaceAll("novi.nl", "Medewerker");
     } else {
-        return "Extern"
+        return "Extern";
     }
 }
 
@@ -59,14 +59,15 @@ console.log(getDomainUser);
 
 
 // OUTCOME = return student, medewerker of extern
-// STAPPEN
+// STAPPEN:
 // if statement + else if? >> NEE >> replaceAll()
 // Toch wel if statement, maar return i.p.v console.log
 
 
 // ========================================================================================================================
 /* Opdracht  3 */
-// Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
+// Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is.
+// De functie returned true of false, afhankelijk van de uitkomst.
 // Een emailadres is valide wanneer:
 // * Er een @ in voorkomt
 // * Er géén , in voorkomt
@@ -77,5 +78,93 @@ console.log(getDomainUser);
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+// -----------------
+
+// OUTCOME = valide email>TRUE  foute email>FALSE
+// @ = TRUE > includes("@") = TRUE
+// , = FALSE > includes (",") = FALSE
+// . aan het einde = FALSE > 1) 'email.length - 1' >> 2) if email.length-1 = "." = FALSE
+// STAPPEN:
+// een for statement (email.length) + if statement? >> Includes()
+
+// ----------------
+
+// ****** POGING 1 : ******
+
+// console.log("opdracht 3");
+// function checkEmailValidity(email) {
+//     // for (let i = 0; i < email.length; i++) {
+//         if (email.includes("@")){
+//             return true;
+//         } else if (email.includes(",")){
+//             return false;
+//         } else if ((email.length [-1]) === ".") {
+//             return false;
+//         }
+//     // }
+// }
+//
+// const emailValidity = checkEmailValidity("tessmellink@novi,nl");
+// console.log(emailValidity);
+
+// Werkt niet, want bij @ gaat die al op TRUE
+
+
+
+//  ****** POGING 2 : ******
+
+// >> VOLGORDE OMDRAAIEN: <<
+// console.log("opdracht 3");
+// function checkEmailValidity(email) {
+//     // const lengthEmail = checkEmailValidity.length;
+//
+//     if (email.includes(",")){
+//         return false;
+//     } else if (email[-1] === ".") {
+//         return false;
+//     } else if (email.includes("@")) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+//
+// const emailValidity = checkEmailValidity("n.eeken@novinl.");
+// console.log(emailValidity);
+
+// Werkt niet bij n.eeken@novinl. >> dubbel check deze regel:
+
+// const checkEmailValidity = ("n.eeken@novinl.")
+// console.log(checkEmailValidity.length);
+// const lengthEmail = checkEmailValidity.length;
+// console.log(lengthEmail -1)
+
+// const lengthEmail = checkEmailValidity.length;
+// console.log(lengthEmail) [-1]
+// WERKT OOK NIET
+
+
+//  ****** POGING 3 : ******
 
 console.log("opdracht 3");
+function checkEmailValidity(email) {
+    // const lengthEmail = checkEmailValidity.length;
+
+    if (email.includes(",")){
+        return false;
+    } else if (email.lastIndexOf(".") === (email.length -1)) {
+        return false;
+    } else if (email.includes("@")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const emailValidity = checkEmailValidity("tessmellink@novi,nl");
+console.log(emailValidity);
+
+// GELUKT! >>
+// Eerst return wat het indexnummer is waar "." het laatst voorkomt.
+// Als dat indexnummer gelijk is aan het laatste indexnummer van de lengte van het emailadres, dan is het FALSE
+
