@@ -1,4 +1,5 @@
-// Je gaat functies schrijven die we kunnen hergebruiken om sommige emailadressen te checken. Nu zul je gaan merken hoe handig functies kunnen zijn!
+// Je gaat functies schrijven die we kunnen hergebruiken om sommige emailadressen te checken.
+// Nu zul je gaan merken hoe handig functies kunnen zijn!
 // Je zult hier methoden van het String Object voor nodig hebben, dus pak de paragraaf op EdHub over het String Object er even bij.
 
 
@@ -9,7 +10,25 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+console.log("opdracht 1")
+function getEmailDomain(email) {
+    const getDomain = email.lastIndexOf("@");
+    return email.substring(getDomain + 1);
+}
 
+const domainName = getEmailDomain("a.wiersma@outlook.com");
+console.log(domainName)
+
+// dubbel check:
+const domainNameTwo = getEmailDomain("t.mellink@novi.nl");
+console.log(domainNameTwo)
+
+// Eerst zo gecheckt of ik de juiste methods gebruik:
+//      const getDomain = "a.wiersma@outlook.com";
+//
+//      const domainAdd = getDomain.lastIndexOf("@");
+//      console.log(domainAdd);
+//      console.log(getDomain.substring(domainAdd +1));
 
 
 /* Opdracht  2 */
