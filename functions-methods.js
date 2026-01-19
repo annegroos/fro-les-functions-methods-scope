@@ -10,7 +10,7 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
-console.log("opdracht 1")
+console.log("opdracht 1");
 function getEmailDomain(email) {
     const getDomain = email.lastIndexOf("@");
     return email.substring(getDomain + 1);
@@ -30,17 +30,41 @@ console.log(domainNameTwo)
 //      console.log(domainAdd);
 //      console.log(getDomain.substring(domainAdd +1));
 
-
+// ========================================================================================================================
 /* Opdracht  2 */
-// Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker), een novi-education domein (student), of extern domein (zoals gmail of outlook)
+// Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker),
+// een novi-education domein (student), of extern domein (zoals gmail of outlook)
 // ---- Verwachte uitkomsten:
 // typeOfEmail("n.eeken@novi-education.nl") geeft "Student"
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+console.log("opdracht 2");
+function typeOfEmail(email) {
+    const getDomain = email.lastIndexOf("@");
+    const domainName = email.substring(getDomain + 1);
+
+    if (domainName === "novi-education.nl") {
+        return domainName.replaceAll("novi-education.nl", "Student")
+    } else if (domainName === "novi.nl") {
+        return domainName.replaceAll("novi.nl", "Medewerker")
+    } else {
+        return "Extern"
+    }
+}
+
+const getDomainUser = typeOfEmail("novi.nlaapjesk@outlook.com");
+console.log(getDomainUser);
 
 
+// OUTCOME = return student, medewerker of extern
+// STAPPEN
+// if statement + else if? >> NEE >> replaceAll()
+// Toch wel if statement, maar return i.p.v console.log
+
+
+// ========================================================================================================================
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
 // Een emailadres is valide wanneer:
@@ -53,3 +77,5 @@ console.log(domainNameTwo)
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+console.log("opdracht 3");
