@@ -21,7 +21,7 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 console.log("opdracht 1a")
 // 1. for-loop
 // 2. .length methode
-// 3. const?
+// 3. const?/let?
 // for (let i = 0; i < grades.length; i++) {
 //     const cumlaude = grades[i] <=8;
 //         console.log(cumlaude);
